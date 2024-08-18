@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tutor Match{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: left;
+            /* Alinhamento do texto justificado */
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            /* Centralização do título */
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            text-align: justify;
+            /* Texto justificado */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .header {
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Tutor Match</h1>
+        <div>
+            <a href="/"><button type="button" class="btn btn-primary">Home</button></a>
+            <a href="{{ url_for('calendario_aulas') }}"><button type="button" class="btn btn-dark">Calendário de Aulas</button></a>
+            {% if session['usuario_logado'] %}
+                <a href="{{ url_for('logout') }}"><button type="button" class="btn btn-primary">Logout</button></a>
+            {% else %}
+                <a href="{{ url_for('login') }}"><button type="button" class="btn btn-primary">Login</button></a>
+            {% endif %}
+            <a href="{{ url_for('politica_privacidade') }}"><button type="button" class="btn btn-dark">Política de Privacidade</button></a>
+        </div>
+    </div>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul id="messages" class="list-unstyled">
+            {% for message in messages %}
+            <li class="alert alert-success">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+
+        {% block conteudo %}{% endblock %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #0074D9;
+        color: white;
+    }
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+<body>
+    <div class="container">
+
+        <!-- código omitido -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul id="messages" class="list-unstyled">
+            {% for message in messages %}
+            <li class="alert alert-success">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <!-- código omitido -->
+
+        <h1>Lista de Aulas</h1>
+        <p> Para inserir uma aula <a href="{{ url_for('criar_evento') }}">clique aqui</a></p>
+
+        <!-- Lista de aulas -->
+        <div class="aulas">
+
+            <!-- Tabela de eventos -->
+            <table class="tabela">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Hora</th>
+                        <th>Nome da Aula</th>
+                        <th>Professor</th>
+                        <th>Link da Aula</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for evento in eventos%}
+                    <tr>
+                        <td>{{ evento[1].strftime('%d-%m-%Y') }}</td>
+                        <td>{{ evento[2].strftime('%H:%M') }}</td>
+                        <td>{{ evento[3] }}</td>
+                        <td>{{ evento[4] }}</td>
+                        <td><a href="{{ evento[5] }}">link</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+{% endblock %}

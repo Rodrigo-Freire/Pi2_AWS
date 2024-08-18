@@ -1,0 +1,4 @@
+Flask
+Flask-WTF
+Flask-Bcrypt
+psycopg2-binary
