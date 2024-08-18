@@ -1,0 +1,66 @@
+# Diretórios e arquivos Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg
+*.egg-info
+dist/
+build/
+*.manifest
+*.spec
+
+# Ambiente virtual
+venv/
+ENV/
+env/
+*.env
+
+# Configurações do IDE
+.vscode/
+.idea/
+
+# Arquivos de log
+*.log
+
+# Arquivos de banco de dados
+*.sqlite3
+*.db
+
+# Arquivos de configuração do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.tmp
+*.swp
+
+# Arquivos do AWS
+.ebextensions/
+*.pem
+
+# Dependências e pacotes
+pip-wheel-metadata/
+__pypackages__/
+*.egg-info/
+*.tox/
+*.nox/
+*.coverage
+*.coverage.*
+*.hypothesis/
+*.mypy_cache/
+*.pytest_cache/
+
+# Documentos de build
+*.zip
+*.tar.gz
+
+# Arquivos do Flask
+instance/
+*.pkl
+*.db
+
+# Arquivos gerados por ferramentas de build e IDE
+*.pyre/
+*.mypy_cache/
